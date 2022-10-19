@@ -1,0 +1,121 @@
+.flex {
+  display: flex;
+  flex-direction: row; /* 並び row -初期値、row-reverse -右から、column -上から、column-reverse -下から*/
+}
+
+.flex {
+  display: flex;
+  flex-wrap: wrap; /* 折り返し no-wrap -初期値、wrap -下に折り返し、wrap-reverse -上に折り返し*/
+}
+
+.flex {
+  display: flex;
+  flex-flow: row wrap; /*directionとwrapをまとめて指定。*/
+}
+
+.flex {
+  display: flex;
+  justify-content: flex-start;/*整列方法 flex-start -初期値、flex-end -右寄り、center -真ん中、space-between -間に間がある、space-around -周りに間がある。*/
+}
+
+.flex {
+  display: flex;
+  align-items: center; /*縦方向の整列方法 stretch -初期値、flex-start -一番上、flex-end -下寄り、center -真ん中、baseline -基準を基に。*/
+}
+
+.flex {
+  display: flex;
+  align-content: flex-end;/*複数行整列方法 stretch -初期値、flex-start -一番上、flex-end -下寄り、center -真ん中、space-between -行に間がある、space-around -周りに間がある。*/
+}
+
+/*flexアイテムの順序を指定*/
+.flex>div:nth-child(1) {
+  order: 3;
+}
+.flex>div:nth-child(2) {
+  order: 4;
+}
+.flex>div:nth-child(3) {
+  order: 1;
+}
+.flex>div:nth-child(4) {
+  order: 2;
+}
+/*:nth-child(x) -セレクターの一種。flexレイアウト以外にも使用。xに数字が入る。*/
+
+/*flexアイテムの横幅の伸びる比率を指定。＊flexアイテムの横幅の合計値がflexコンテナー自体の横幅に満たない場合*/
+.flex>div:nth-child(1) {
+  flex-grow: 0;
+}
+.flex>div:nth-child(2) {
+  flex-grow: 1;
+}
+.flex>div:nth-child(3) {
+  flex-grow: 2;
+}
+.flex>div:nth-child(4) {
+  flex-grow: 3;
+}
+
+/*flexアイテムの横幅の縮む比率を指定。flexアイテムの横幅の合計がflexコンテナー自体の横幅が超過している、flex-wrapがno-wrap*/
+.flex>div {
+  width: 300px;
+}
+.flex>div:nth-child(1) {
+  flex-shrink: 0;
+}
+.flex>div:nth-child(2) {
+  flex-shrink: 1;
+}
+.flex>div:nth-child(3) {
+  flex-shrink: 2;
+}
+.flex>div:nth-child(4) {
+  flex-shrink: 3;
+}
+
+/*flexアイテムの横幅を指定。widthを使用。親の箱のflex-directionが縦並び（columnまたはcolumn-reverse）の設定であれば自動で高さに変わる*/
+.flex {
+  display: flex;
+  /*flex-direction:row;*/
+}
+.flex>div {
+  flex-basis: 100px;
+}
+/*縦の場合*/
+.flex {
+  display: flex;
+  flex-direction: column;
+}
+.flex>div {
+  flex-basis: 100px;
+}
+
+/*flex-grow,flex-shrink,flex-basisをまとめて使用。値の指定方法や個数によって表示のされ方が変わるため、注意が必要。*/
+.flex>div {
+ /*単位がない数値を一つ指定→flex-growに*/
+ flex: 2;
+ /*単位のある数値を一つ指定→flex-basisに*/
+ flex: 10em;
+ flex: 30%;
+ /*単位がない数値を二つ指定→flex-grow,flex-shrinkに*/
+ flex: 2 2;
+ /*値を三つ指定。必ずflex-grow,flex-shrink,flex-basisに*/
+ flex: 2 2 10%;
+}
+
+/*flexアイテムの縦方向の位置を、アイテムごとに個別に指定*/
+.flex>div:nth-child(2) {
+  align-self: flex-start;
+}/*auto -初期値、flex-start -上、flex-end -下、ceter -真ん中、stretch -長さ他と同じ、baseline -線に合わせる*/
+/*＊align-self:baseline;は同じ設定のアイテムが複数亞ある場合のみ動作します。一つの場合はflex-startと同様。*/
+
+/*よく使うflexboxの設定*/
+最初の要素だけ左添えで、それ以外は右揃えで横に並べる
+.flex {
+  display: flex;
+  justify-content: flex-end;
+}
+.flex>:first-child {
+  margin-right: auto
+}
